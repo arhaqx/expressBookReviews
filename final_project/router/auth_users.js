@@ -35,7 +35,7 @@ regd_users.post("/login", (req, res) => {
       accessToken,
       username
     };
-    return res.status(200).json({ message: "Customer successfully logged in", token: accessToken });
+    return res.status(200).send("Customer successfully logged in");
   } else {
     return res.status(208).json({ message: "Invalid Login. Check username and password" });
   }
@@ -86,11 +86,9 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
 
   if (books[isbn].reviews && books[isbn].reviews[username]) {
     delete books[isbn].reviews[username];
-    return res.status(200).json({
-      message: `Reviews for the ISBN ${isbn} posted by the user ${username} deleted.`
-    });
+    return res.status(200).send(`Review for ISBN ${isbn} deleted.`);
   } else {
-    return res.status(404).json({ message: `No review found for ISBN ${isbn} posted by the user ${username}.` });
+    return res.status(404).send(`Review for ISBN ${isbn} deleted.`);
   }
 });
 
