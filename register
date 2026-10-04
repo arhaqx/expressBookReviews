@@ -1,0 +1,9 @@
+# Task 7: Register a new user
+
+cURL Command:
+curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpassword"}'
+
+Output:
+{
+    "message": "Customer successfully registered. Now you can login"
+}
